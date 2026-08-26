@@ -1,0 +1,18 @@
+/* Smooth, low-cost motion: no JavaScript required. */
+body { background:#08090b; color:#f1f1f1; }
+.site-header { position:sticky; top:0; z-index:10; background:rgba(8,9,11,.82); backdrop-filter:blur(16px); border-color:rgba(255,255,255,.15); }
+.future-hero { min-height:100vh; padding-bottom:0; background:radial-gradient(circle at 82% 28%, rgba(255,132,0,.22), transparent 24%), #08090b; }
+.hero-grid { min-height:48vh; } .hero-footer { display:none; } .hero-side p { color:#c8c8c8; }
+.scroll-showcase { position:relative; height:min(60vw,570px); min-height:350px; margin:0 -5vw; overflow:hidden; border-radius:28px 28px 0 0; background:#15171c; isolation:isolate; }
+.scroll-showcase img { width:100%; height:135%; object-fit:cover; object-position:center; display:block; opacity:.75; transform:translateY(-17%); animation:photo-glide linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
+.scroll-showcase::after { content:""; position:absolute; inset:0; background:linear-gradient(100deg,rgba(8,9,11,.85) 0%,rgba(8,9,11,.1) 65%),linear-gradient(0deg,rgba(8,9,11,.35),transparent); pointer-events:none; }
+.showcase-copy { position:absolute; z-index:2; left:6vw; top:50%; transform:translateY(-50%); }.showcase-copy span { display:block; color:#ff8400; font:500 10px "DM Mono",monospace; letter-spacing:.1em; }.showcase-copy strong { display:block; margin-top:15px; font:700 clamp(38px,6vw,76px)/.95 Manrope,sans-serif; letter-spacing:-.07em; }
+.glass-orb { position:absolute; z-index:1; right:13%; top:20%; width:min(18vw,220px); aspect-ratio:1; border-radius:50%; background:linear-gradient(140deg,rgba(255,255,255,.9),rgba(255,132,0,.15) 35%,rgba(80,76,160,.2)); box-shadow:0 0 55px rgba(255,132,0,.32); backdrop-filter:blur(8px); animation:orb-float 6s ease-in-out infinite alternate; }
+.intro { background:#f0f0ef; color:#111; }.services { background:#0e0f12; }.work { background:#101114; color:#f1f1f1; border-color:rgba(255,255,255,.18); }.project-info p { color:#a4a4a4; }.contact { background:#ff8400; color:#101010; }.contact-email span { color:#101010; } footer { background:#08090b; }
+.project-art { transition:transform .6s cubic-bezier(.2,.7,.2,1), filter .6s ease; }.project:hover .project-art { transform:scale(.97); filter:brightness(1.1); }.art-one { background:linear-gradient(140deg,#31363a,#111); color:#ff8400; }.art-two { background:linear-gradient(140deg,#f4f4f4,#7b7d80); color:#101010; }.art-three { background:linear-gradient(140deg,#ff9c2e,#de4b00); color:#101010; }
+@keyframes photo-glide { from { transform:translateY(-23%) scale(1.06); } to { transform:translateY(-4%) scale(1); } } @keyframes orb-float { to { transform:translateY(25px) translateX(-12px) scale(1.08); } }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } .scroll-showcase img { transform:translateY(-17%); } }
+@media (max-width:700px) { .scroll-showcase { height:480px; margin:15px -6vw 0; border-radius:20px 20px 0 0; }.showcase-copy { left:8vw; top:20%; transform:none; }.glass-orb { right:8%; top:58%; width:130px; } }
+
+/* The photo movement itself is controlled by a lightweight Safari-friendly script. */
+.scroll-showcase img { animation:none; will-change:transform; }
